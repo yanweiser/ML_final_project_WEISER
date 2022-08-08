@@ -1,0 +1,9 @@
+batch_size: 1000
+epochs: 50
+embed_size: 2056
+dim_hidden: 512
+reduced_dim_hidden: 128
+train_size: 0.7
+lr: 0.000005
+manual_seed: 42
+out_size: 1
