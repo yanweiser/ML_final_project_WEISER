@@ -3,7 +3,7 @@
 *.PNG
 
 # pre-trained models
-models
+*.pth
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

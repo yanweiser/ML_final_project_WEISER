@@ -170,3 +170,4 @@ if __name__ == '__main__':
     print()
     model.eval()
     utils.run_analysis(model, train_loader, test_loader, device)
+    torch.save(model.state_dict(), os.path.join('models', 'mlp.pth'))
