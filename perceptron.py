@@ -8,7 +8,6 @@ import utils
 
 class Perceptron:
     def __init__(self, config):
-
         self.weights = np.zeros(config['weigth_size'])
 
     def forward(self, x):
@@ -62,18 +61,20 @@ def train_perceptron(model, train_data, test_data, max_epochs):
 
 
 def test_perceptron(model, train_data, test_data):
-    print('Test Data:\n')
+    print('\nTest Data:')
     length = len(test_data[1])
     preds = []
     for i in range(length):
         pred = model.forward(test_data[0][i])
         preds.append(pred)
     utils.analyze(preds, test_data[1])
-    print('\nTrain Data\n')
-    length = len(train_data[1])
+    print('\nAll the Data:')
+    all_x = np.concatenate((train_data[0], test_data[0]))
+    all_y = np.concatenate((train_data[1], test_data[1]))
+    length = len(all_y)
     preds = []
     for i in range(length):
-        pred = model.forward(train_data[0][i])
+        pred = model.forward(all_x[i])
         preds.append(pred)
-    utils.analyze(preds, train_data[1])
+    utils.analyze(preds, all_y)
         

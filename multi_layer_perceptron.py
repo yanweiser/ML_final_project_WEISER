@@ -30,9 +30,9 @@ class MLP(nn.Module):
         (4) the decoder uses the hidden state to produce a singular float value that is being passed into a logistic function
             to produce a value between 0 and 1. 
 
-    Input Size is N * V where N is the batch size and V the size of the vocabulary.
+    Input Size is N x V where N is the batch size and V the size of the vocabulary.
 
-    The  Output is of size N * 1. 
+    The  Output is of size N x 1. 
     '''
     def __init__(self, config):
         super(MLP, self).__init__()
@@ -94,18 +94,18 @@ def train(model, optimizer, loss_func, dataloader, config, test_data):
             epoch_loss += loss.item()
             loss.backward()
             optimizer.step()
-            print(f'({num_batch}/{len(dataloader)}) Loss = {loss.item()}', end='\r')
+            print(f'{epoch}: ({num_batch}/{len(dataloader)}) Loss = {loss.item()}', end='\r')
         avg_loss = epoch_loss/len(dataloader)
-        print(f'Epoch {epoch}:    Loss = {avg_loss}')
         with torch.no_grad():
             train_acc = test(model, dataloader, config)
             test_acc = test(model, test_data, config)
             losses.append(avg_loss)
             train_accs.append(train_acc)
             test_accs.append(test_acc)
-            if epoch%10 == 0:
-                print('\tTrain Accuracy = ', train_acc)
-                print('\tTest Accuracy = ', test_acc)
+            if epoch%20 == 0:
+                print(f'Epoch {epoch}:    Loss = {avg_loss}')
+                print('                   Train Accuracy = ', train_acc)
+                print('                   Test Accuracy = ', test_acc)
     return losses, train_accs, test_accs
             
 

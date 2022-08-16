@@ -24,6 +24,7 @@ def analyze(preds, labels):
     accuracy = (tp + tn)/length
     precision = tp/(tp+fp)
     recall = tp/(tp+fn)
+    fpr = fp/(fp+tn)
     output = ""
     output +="=== Prediction Analysis ===\n"
 
@@ -36,7 +37,8 @@ def analyze(preds, labels):
     output +="-----------------------------\n"
     output +=f"accuracy:          {accuracy:.5f}\n"
     output +=f"precision:         {precision:.5f}\n"
-    output +=f"recall:            {recall:.5f}"
+    output +=f"recall (tpr):      {recall:.5f}\n"
+    output +=f"fpr:               {fpr:.5f}"
     print(output)
     return
 
