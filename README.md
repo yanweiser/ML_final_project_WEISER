@@ -10,5 +10,5 @@ The Python packages needed to run this project are listed in [requirements.txt](
 Everything can be directly run from the [Jupyter Notebook](final_project_WEISER.ipynb) and there are pre-trained model available [here](https://drive.google.com/drive/folders/1lZmJ6bpKlj2L15ByMNMiScPn6oZ7N2gn?usp=sharing).\
 Alternatively models can be trained by running the training scripts in the notebook. The PyTorch model can be trained directly by running 
 
-`python multi_layer_perceptron.py`
+`$ python multi_layer_perceptron.py`
 
